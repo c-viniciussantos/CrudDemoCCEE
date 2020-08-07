@@ -1,4 +1,4 @@
-package com.cvinicius.DemoCrudVini.resource;
+package com.cvinicius.DemoCrudVini.resources;
 
 import java.util.List;
 
@@ -9,25 +9,25 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cvinicius.DemoCrudVini.entities.User;
-import com.cvinicius.DemoCrudVini.service.UserService;
+import com.cvinicius.DemoCrudVini.entities.Category;
+import com.cvinicius.DemoCrudVini.services.CategoryService;
 
 @RestController
-@RequestMapping(value = "/users")
-public class UserResource {
+@RequestMapping(value = "/categories")
+public class CategoryResource {
 	
 	@Autowired
-	private UserService service;
-	
+	private CategoryService service;
+
 	@GetMapping
-	public ResponseEntity<List<User>> findAll(){
-		List<User> list = service.findAll();
+	public ResponseEntity<List<Category>> findAll(){
+		List<Category> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<User> findById(@PathVariable Long id){
-		User obj = service.findById(id);
+	public ResponseEntity<Category> findById(@PathVariable Long id){
+		Category obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
 }
